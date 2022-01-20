@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
-import { getTxList } from "../redux/actions";
-import { useAppDispatch } from "../redux/hooks/hooks";
+/* import { getTxList } from "../redux/actions"; */
+import { init } from "../utils/web3Client";
+/* import { useAppDispatch } from "../redux/hooks/hooks"; */
 
 export default function Home() {
-    const dispatch = useAppDispatch();
+    /* const dispatch = useAppDispatch(); */
     
     useEffect(() => {
-        dispatch(getTxList())
+        init()
     }, []);
 
   return <div>Home</div>;
