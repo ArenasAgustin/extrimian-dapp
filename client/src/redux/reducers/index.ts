@@ -1,4 +1,4 @@
-import ActionInterface from "../../interfaces/ActionInterface";
+import ActionInterface from "../../interfaces/actionInterface";
 import StateInterface from "../../interfaces/stateInterface";
 import { GET_TXLIST } from "../constants";
 import { upgradeAddress, getAddress } from "../../utils/addressApp";
