@@ -1,0 +1,1 @@
+export const GET_TXLIST = 'GET_TXLIST';
