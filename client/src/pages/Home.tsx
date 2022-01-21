@@ -3,6 +3,7 @@ import { ethers } from "ethers";
 import Account from "../contracts/Account.json";
 import axios from "axios";
 import TxInterface from "../interfaces/txInterface";
+import NavBar from "../components/NavBar/NavBar";
 
 const { REACT_APP_API_KEY, REACT_APP_DEFAULT_ADDRESS, REACT_APP_URL_BASE } =
   process.env;
@@ -12,7 +13,9 @@ export default function Home() {
 
   const [txList, setTxList] = useState<TxInterface[]>([]);
 
-  const [defaultAccount, setDefaultAccount] = useState<string | null>(null);
+  const [defaultAccount, setDefaultAccount] = useState<string | undefined>(
+    REACT_APP_DEFAULT_ADDRESS
+  );
   const [connButtonText, setConnButtonText] = useState("Connect Wallet");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -29,6 +32,7 @@ export default function Home() {
         .request({ method: "eth_requestAccounts" })
         .then((result: string[0]) => {
           accountChangedHandler(result[0]);
+          getTxList();
           setConnButtonText("Wallet Connected");
         })
         .catch((error: any) => {
@@ -61,11 +65,11 @@ export default function Home() {
     setContract(tempContract);
   };
 
+  window.ethereum.on("accountsChanged", accountChangedHandler);
+
   const getTxList = async () => {
     let txListAux = await axios.get(
-      `${REACT_APP_URL_BASE}&address=${
-        defaultAccount ? defaultAccount : REACT_APP_DEFAULT_ADDRESS
-      }&apikey=${REACT_APP_API_KEY}`
+      `${REACT_APP_URL_BASE}&address=${defaultAccount}&apikey=${REACT_APP_API_KEY}`
     );
 
     setTxList(txListAux.data.result);
@@ -77,11 +81,15 @@ export default function Home() {
 
   return (
     <div>
+      <div>
+        <NavBar />
+      </div>
       <button onClick={connectWalletHandler}>{connButtonText}</button>
       <div>
         <h3>Address: {defaultAccount}</h3>
       </div>
       {errorMessage}
+      <br />
     </div>
   );
 }
