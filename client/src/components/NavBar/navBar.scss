@@ -18,7 +18,7 @@ $breakpoints:(sm: 540px,
     align-items: center;
     max-width: 1300px;
 
-    & .navbar__divimg {
+    & .navbar__div-img {
         width: 9em;
 
         & .navbar__img {
@@ -27,7 +27,7 @@ $breakpoints:(sm: 540px,
         }
     }
 
-    & .navbar__divbutton {
+    & .navbar__div-button {
         & .navbar__button {
             font-size: 1em;
             color: #fff;

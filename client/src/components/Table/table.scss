@@ -1,0 +1,124 @@
+.table {
+    margin: 1em 0;
+
+    & .table__div-columns-headers {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 2.5em;
+        padding: 1em auto;
+        background: #f0f0f0;
+        border-bottom: solid 1px #626467;
+        border-top: solid 1px #626467;
+
+        & .table__container-column-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            & .table__column-header {
+                width: 16em;
+                margin: 1em;
+
+                &.block,
+                &.value,
+                &.txn-fee {
+                    width: 6em;
+                }
+
+                &.to{
+                    width: 18em;
+                }
+            }
+        }
+    }
+
+    & .table__div-rows {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 1300px;
+
+        & .table__div-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 2.5em;
+            border-top: solid 1px #f0f0f0;
+
+            & .table__container-column {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+                & .table__column {
+                    width: 16em;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    margin: 0 1em;
+
+                    &.block,
+                    &.value,
+                    &.txn-fee {
+                        width: 6em;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+
+                    &.my-address,
+                    & .my-address {
+                        color: #94CC00;
+                    }
+
+                    &.to {
+                        width: 18em;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        & .IN {
+                            font-size: .6em;
+                            color: #fff;
+                            text-decoration: none;
+                            background: #94CC00;
+                            border: solid 1px #94CC00;
+                            font-weight: 500;
+                            padding: .1em .7em;
+                            border-radius: 5px;
+                            margin-right: .5em;
+                        }
+
+                        & .OUT {
+                            font-size: .6em;
+                            color: #626467;
+                            text-decoration: none;
+                            background: white;
+                            font-weight: 500;
+                            border: solid 1px #94CC00;
+                            padding: .1em .7em;
+                            border-radius: 5px;
+                            margin-right: .5em;
+                        }
+
+                        & .to-text {
+                            width: 14em;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            overflow: hidden;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

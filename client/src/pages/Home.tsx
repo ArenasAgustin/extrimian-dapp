@@ -4,6 +4,8 @@ import Account from "../contracts/Account.json";
 import axios from "axios";
 import TxInterface from "../interfaces/txInterface";
 import NavBar from "../components/NavBar/NavBar";
+import Table from "../components/Table/Table";
+import './home.scss';
 
 const { REACT_APP_API_KEY, REACT_APP_DEFAULT_ADDRESS, REACT_APP_URL_BASE } =
   process.env;
@@ -11,14 +13,17 @@ const { REACT_APP_API_KEY, REACT_APP_DEFAULT_ADDRESS, REACT_APP_URL_BASE } =
 export default function Home() {
   let contractAddress = "0x3C6C34eCA4341d857745F89696335aEAfA22eDB4";
 
+  //transaction list
   const [txList, setTxList] = useState<TxInterface[]>([]);
 
+  //account and error state
   const [defaultAccount, setDefaultAccount] = useState<string | undefined>(
     REACT_APP_DEFAULT_ADDRESS
   );
   const [connButtonText, setConnButtonText] = useState("Connect Wallet");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  //ethers provider, contract, and signer
   const [provider, setProvider] =
     useState<ethers.providers.Web3Provider | null>(null);
   const [signer, setSigner] = useState<ethers.providers.JsonRpcSigner | null>(
@@ -26,13 +31,13 @@ export default function Home() {
   );
   const [contract, setContract] = useState<ethers.Contract | null>(null);
 
+  // connect to wallet
   const connectWalletHandler = () => {
     if (window.ethereum && window.ethereum.isMetaMask) {
       window.ethereum
         .request({ method: "eth_requestAccounts" })
         .then((result: string[0]) => {
           accountChangedHandler(result[0]);
-          getTxList();
           setConnButtonText("Wallet Connected");
         })
         .catch((error: any) => {
@@ -45,11 +50,15 @@ export default function Home() {
   };
 
   // update account, will cause component re-render
-  const accountChangedHandler = (newAccount: string) => {
+  const accountChangedHandler = (newAccount: string | undefined) => {
     setDefaultAccount(newAccount);
+    getTxList();
     updateEthers();
   };
 
+  window.ethereum.on("accountsChanged", accountChangedHandler);
+
+  // update ethers provider and signer
   const updateEthers = () => {
     let tempProvider = new ethers.providers.Web3Provider(window.ethereum);
     setProvider(tempProvider);
@@ -65,8 +74,7 @@ export default function Home() {
     setContract(tempContract);
   };
 
-  window.ethereum.on("accountsChanged", accountChangedHandler);
-
+  // get transaction list
   const getTxList = async () => {
     let txListAux = await axios.get(
       `${REACT_APP_URL_BASE}&address=${defaultAccount}&apikey=${REACT_APP_API_KEY}`
@@ -75,20 +83,30 @@ export default function Home() {
     setTxList(txListAux.data.result);
   };
 
+  // reset account
+  const resetAccountHandler = async () => {
+    accountChangedHandler(REACT_APP_DEFAULT_ADDRESS);
+  };
+
   useEffect(() => {
     getTxList();
   }, []);
 
   return (
-    <div>
-      <div>
-        <NavBar />
+    <div className="home">
+      <div className="home__navbar">
+        <NavBar resetAccountHandler={resetAccountHandler} />
       </div>
-      <button onClick={connectWalletHandler}>{connButtonText}</button>
       <div>
-        <h3>Address: {defaultAccount}</h3>
+        <div>
+          <h3>Address: {defaultAccount}</h3>
+        </div>
+        <button onClick={connectWalletHandler}>{connButtonText}</button>
+        {errorMessage}
       </div>
-      {errorMessage}
+      <div className="home__table">
+        <Table txList={txList} address={defaultAccount}/>
+      </div>
       <br />
     </div>
   );

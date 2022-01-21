@@ -1,10 +1,14 @@
 import React from "react";
 import "./navBar.scss";
 
-export default function NavBar() {
+export default function NavBar({
+  resetAccountHandler,
+}: {
+  resetAccountHandler: () => void;
+}) {
   return (
     <nav className="navbar">
-      <div className="navbar__divimg">
+      <div className="navbar__div-img">
         <img
           src={"https://www.extrimian.com/assets/img/extrimian_logo.svg"}
           alt="Extrimian logo"
@@ -12,8 +16,10 @@ export default function NavBar() {
         />
       </div>
 
-      <div className="navbar__divbutton">
-        <button className="navbar__button">Reset Account</button>
+      <div className="navbar__div-button">
+        <button className="navbar__button" onClick={resetAccountHandler}>
+          Reset Account
+        </button>
       </div>
     </nav>
   );
