@@ -4,19 +4,27 @@ $breakpoints:(sm: 540px,
 );
 
 @mixin media-up($breakpoint) {
-    @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
+    @media screen and (max-width: map-get($breakpoints, $breakpoint)) {
         @content;
     }
 }
 
 .navbar {
-    width: 100vw;
+    width: calc(100% - 4em);
+    height: 4em;
+    margin: 0;
     padding: .5em 2em;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     max-width: 1300px;
+    background-color: #fff;
+
+    @include media-up(xl) {
+        width: 100%;
+        padding: .5em 1em;
+    }
 
     & .navbar__div-img {
         width: 9em;
