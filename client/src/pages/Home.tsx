@@ -51,13 +51,20 @@ export default function Home() {
   };
 
   // update account, will cause component re-render
-  const accountChangedHandler = (newAccount: string | undefined) => {
+  const accountChangedHandler = async (newAccount: string | undefined) => {
     setDefaultAccount(newAccount);
+    await contract?.setAccount(newAccount);
     getTxList();
     updateEthers();
   };
 
   window.ethereum.on("accountsChanged", accountChangedHandler);
+
+  const chainChangedHandler = () => {
+    window.location.reload();
+  };
+
+  window.ethereum.on("chainChanged", chainChangedHandler);
 
   // update ethers provider and signer
   const updateEthers = () => {
@@ -73,12 +80,16 @@ export default function Home() {
       tempSigner
     );
     setContract(tempContract);
+    console.log(tempContract);
   };
 
   // get transaction list
   const getTxList = async () => {
+    let temporaryAccount = await contract?.getAccount();
     let txListAux = await axios.get(
-      `${REACT_APP_URL_BASE}&address=${defaultAccount}&apikey=${REACT_APP_API_KEY}`
+      `${REACT_APP_URL_BASE}&address=${
+        temporaryAccount ? temporaryAccount : defaultAccount
+      }&apikey=${REACT_APP_API_KEY}`
     );
 
     setTxList(txListAux.data.result);
