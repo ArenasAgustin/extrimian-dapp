@@ -105,8 +105,6 @@ $breakpoints:(sm: 540px,
                     &.value,
                     &.txn-fee {
                         width: 6em;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
                     }
 
                     &.my-address,

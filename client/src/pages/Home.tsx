@@ -5,7 +5,8 @@ import axios from "axios";
 import TxInterface from "../interfaces/txInterface";
 import NavBar from "../components/NavBar/NavBar";
 import Table from "../components/Table/Table";
-import './home.scss';
+import "./home.scss";
+import AddressConnect from "../components/AddressConnect/AddressConnect";
 
 const { REACT_APP_API_KEY, REACT_APP_DEFAULT_ADDRESS, REACT_APP_URL_BASE } =
   process.env;
@@ -20,7 +21,7 @@ export default function Home() {
   const [defaultAccount, setDefaultAccount] = useState<string | undefined>(
     REACT_APP_DEFAULT_ADDRESS
   );
-  const [connButtonText, setConnButtonText] = useState("Connect Wallet");
+  const [buttonText, setButtonText] = useState("Connect Wallet");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   //ethers provider, contract, and signer
@@ -38,7 +39,7 @@ export default function Home() {
         .request({ method: "eth_requestAccounts" })
         .then((result: string[0]) => {
           accountChangedHandler(result[0]);
-          setConnButtonText("Wallet Connected");
+          setButtonText("Wallet Connected");
         })
         .catch((error: any) => {
           setErrorMessage(error.message);
@@ -97,15 +98,16 @@ export default function Home() {
       <div className="home__navbar">
         <NavBar resetAccountHandler={resetAccountHandler} />
       </div>
-      <div>
-        <div>
-          <h3>Address: {defaultAccount}</h3>
-        </div>
-        <button onClick={connectWalletHandler}>{connButtonText}</button>
-        {errorMessage}
+      <div className="home__address">
+        <AddressConnect
+          account={defaultAccount}
+          errorMessage={errorMessage}
+          buttonText={buttonText}
+          connectWalletHandler={connectWalletHandler}
+        />
       </div>
       <div className="home__table">
-        <Table txList={txList} address={defaultAccount}/>
+        <Table txList={txList} address={defaultAccount} />
       </div>
       <br />
     </div>
