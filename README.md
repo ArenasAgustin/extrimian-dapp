@@ -10,16 +10,22 @@ El proyecto se conecta con la cuenta de Metamask de la persona que usa la págin
 
 Para realizar el proyecto se utilizaron las siguientes tecnologías:
 
-*[TypeScript](https://www.typescriptlang.org/)
-*[Node.js](https://nodejs.org/)
-*[Ethers.js](https://docs.ethers.io/v5/)
-*[React](https://reactjs.org/)
-*[Scss](https://sass-lang.com/)
-*[Truffle](https://truffleframework.com/)
-*[Ganache](https://trufflesuite.com/ganache/)
-*[Solc](https://docs.soliditylang.org/en/v0.8.11/installing-solidity.html)
-*[Solidity](https://solidity-es.readthedocs.io/es/latest/)
-*[Git](https://git-scm.com/)
+* [TypeScript](https://www.typescriptlang.org/)
+* [Node.js](https://nodejs.org/)
+* [Ethers.js](https://docs.ethers.io/v5/)
+* [React](https://reactjs.org/)
+* [Scss](https://sass-lang.com/)
+* [Truffle](https://truffleframework.com/)
+* [Ganache](https://trufflesuite.com/ganache/)
+* [Solc](https://docs.soliditylang.org/en/v0.8.11/installing-solidity.html)
+* [Solidity](https://solidity-es.readthedocs.io/es/latest/)
+* [Git](https://git-scm.com/)
+
+## Diagrama de alquitectura
+
+<p align="center">
+    <img src='./assets/diagrama arquitectura.png'/>
+</p>
 
 ## Pasos para utilizar la Dapp
 
