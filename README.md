@@ -1,5 +1,10 @@
 # Extrimian - Dapp
 
+<p align="center">
+    <img src='./assets/extrimian_logo.svg'/>
+</p>
+
+
 ## Introducción
 
 Este proyecto es una Dapp (Aplicaciones descentralizadas) que se comunica con un smart contract desplegado en una red testnet blockchain ethereum (https://rinkeby.etherscan.io/).
@@ -24,7 +29,7 @@ Para realizar el proyecto se utilizaron las siguientes tecnologías:
 ## Diagrama de alquitectura
 
 <p align="center">
-    <img src='./assets/diagrama arquitectura.png'/>
+    <img src='./assets/diagrama_arquitectura.png'/>
 </p>
 
 ## Pasos para utilizar la Dapp
