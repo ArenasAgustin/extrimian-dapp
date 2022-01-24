@@ -8,11 +8,17 @@ import Table from "../components/Table/Table";
 import "./home.scss";
 import AddressConnect from "../components/AddressConnect/AddressConnect";
 
-const { REACT_APP_API_KEY, REACT_APP_DEFAULT_ADDRESS, REACT_APP_URL_BASE } =
-  process.env;
+const {
+  REACT_APP_API_KEY,
+  REACT_APP_DEFAULT_ADDRESS,
+  REACT_APP_URL_BASE,
+  REACT_APP_CONTACT_ADDRESS,
+} = process.env;
 
 export default function Home() {
-  let contractAddress = "0x3C6C34eCA4341d857745F89696335aEAfA22eDB4";
+  let contractAddress = REACT_APP_CONTACT_ADDRESS
+    ? REACT_APP_CONTACT_ADDRESS
+    : "0x3C6C34eCA4341d857745F89696335aEAfA22eDB4";
 
   //transaction list
   const [txList, setTxList] = useState<TxInterface[]>([]);
