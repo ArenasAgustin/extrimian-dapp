@@ -1,6 +1,9 @@
 # Extrimian - Dapp
 
-https://user-images.githubusercontent.com/72575052/150850380-4d8cc403-1f84-497b-bc0f-96fc9d3b42b0.svg
+<p align="center">
+    <img src='./assets/extrimian_logo.svg'/>
+</p>
+
 
 ## Introducción
 
@@ -25,7 +28,9 @@ Para realizar el proyecto se utilizaron las siguientes tecnologías:
 
 ## Diagrama de alquitectura
 
-https://user-images.githubusercontent.com/72575052/150850300-7b039c50-0a7e-416d-acab-0c6878da8a4a.png
+<p align="center">
+    <img src='./assets/diagrama_arquitectura.png'/>
+</p>
 
 ## Pasos para utilizar la Dapp
 
@@ -50,7 +55,9 @@ Luego hay que abrir Ganache y hacer clic en “QuickStart”. Hay que deployar e
 
 Seguido de esto en la consola un mensaje como el siguiente, se debe copiar la dirección del contrato y guardarla en un archivo llamado ".env" en la ruta ./client/
 
-https://user-images.githubusercontent.com/72575052/150849846-9a2c5412-09d5-4fdb-9751-f089f0d1afaf.png
+<p align="center">
+    <img src='./assets/captura_1.png'/>
+</p>
 
 En el archivo ".env" se debe agregar la siguiente linea:
 
@@ -64,15 +71,22 @@ Luego en la carpeta client hay ejecutar el comando start en la consola:
 
 Se abrirá la página web en la dirección: [localhost:3000](http://localhost:3000/)
 
-https://user-images.githubusercontent.com/72575052/150850078-576e9028-d698-4eec-b80e-6725e1c969b3.png
+<p align="center">
+    <img src='./assets/captura_2.png'/>
+</p>
 
 Para conectar la cuenta de Metamask a la Dapp se debe hacer clic en el botón que dice "Connect Wallet" y aparecerán las primeras 10 transacciones realizadas con la cuenta.
 
-https://user-images.githubusercontent.com/72575052/150850108-477d6846-27ae-487e-8975-c5f6c7b9230e.png
+<p align="center">
+    <img src='./assets/captura_3.png'/>
+</p>
 
 Si se quiere sacar la cuenta de la página y resetear a la cuenta por defecto, se debe hacer clic en el botón que dice "Reset Wallet".
 
-https://user-images.githubusercontent.com/72575052/150850162-1dc16489-8293-4871-9707-2668d658bfcd.png
+<p align="center">
+    <img src='./assets/captura_4.png'/>
+</p>
+
 
 ## Link del Repositorio
 
