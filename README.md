@@ -7,7 +7,7 @@
 
 ## Introducción
 
-Este proyecto es una Dapp (Aplicaciones descentralizadas) que se comunica con un smart contract desplegado en una red testnet blockchain ethereum (https://rinkeby.etherscan.io/).
+Este proyecto es una Dapp (Aplicaciones descentralizadas), para test de aplicación para Extrimian, que se comunica con un smart contract desplegado en una red testnet blockchain ethereum (https://rinkeby.etherscan.io/).
 
 El proyecto se conecta con la cuenta de Metamask de la persona que usa la página web para poder mostrar las primeras 10 transacciones realizadas con la cuenta, las transacciones las obtiene de la API Rinkeby. La app guarda en la blockchain la cuenta y la cambia al conectar una cuenta nueva.
 
